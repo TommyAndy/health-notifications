@@ -1,5 +1,6 @@
 package com.healthnotifications;
 
+import net.runelite.client.config.Alpha;
 import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
@@ -19,6 +20,7 @@ public interface HealthNotificationsConfig extends Config
 		return 0;
 	}
 
+	@Alpha
 	@ConfigItem(
 			keyName = "overlayColor",
 			name = "Overlay Color",
