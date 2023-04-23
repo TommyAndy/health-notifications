@@ -1,4 +1,5 @@
 # Health Notifications
 Inspired by plugins like Wintertodt Notifications (https://github.com/jodelahithit/runelite-plugins/tree/wintertodt-notifications), 
-this plugin provides a visual notification in the form of a colored overlay when hitpoints breach a specific threshold. There is also a tray
-notification if tabbed out of Runelite when the threshold is breached.
+this plugin provides a visual notification in the form of a colored overlays when hitpoints or prayer points breach a specific threshold. A tray
+notification (for when tabbed out of Runelite) when either threshold is breached can be enabled. There's also combo setting that will allow you to set a third overlay color
+when both hitpoints and prayer points are both breaching the configured thresholds.
