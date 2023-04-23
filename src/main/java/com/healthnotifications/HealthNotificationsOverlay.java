@@ -27,7 +27,7 @@ public class HealthNotificationsOverlay extends Overlay {
     public Dimension render(Graphics2D graphics) {
         if (plugin.shouldRenderOverlay()) {
             Color color = graphics.getColor();
-            graphics.setColor(config.overlayColor());
+            graphics.setColor(plugin.getOverlayColor());
             graphics.fill(new Rectangle(client.getCanvas().getSize()));
             graphics.setColor(color);
         }
