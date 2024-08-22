@@ -75,7 +75,7 @@ public class HealthNotificationsPlugin extends Plugin
 			if (shouldNotifyPrayer && prayerTotalBelowThreshold()) {
 				notifier.notify("Your prayer points are below " + config.getPrayerThreshold());
 				shouldNotifyPrayer = false;
-			} else if (!hitpointTotalBelowThreshold()) {
+			} else if (!prayerTotalBelowThreshold()) {
 				shouldNotifyPrayer = true;
 			}
 		}
