@@ -21,8 +21,8 @@ import java.awt.*;
 @Slf4j
 @PluginDescriptor(
 		name = "Health Notifications",
-		description = "Visual Notifications for Health",
-		tags = {"health", "hitpoints", "hp", "notifications"}
+		description = "Visual Notifications for Health and Prayer",
+		tags = {"health", "hitpoints", "hp", "prayer", "notifications"}
 )
 public class HealthNotificationsPlugin extends Plugin
 {
