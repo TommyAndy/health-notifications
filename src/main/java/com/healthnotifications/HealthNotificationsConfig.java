@@ -60,6 +60,17 @@ public interface HealthNotificationsConfig extends Config
 	)
 	default boolean disableHitpointNotifications() { return true; }
 
+	@ConfigItem(
+			keyName = "hitpointNotifyTime",
+			name = "Hitpoint Notify Time",
+			description = "Seconds between Hitpoint notifications (0 for every tick)",
+			position = 5,
+			section = hitpointSettings
+	)
+	default int getHitpointNotifyTime() {
+		return 1;
+	}
+
 	/* Prayer Settings */
 	@ConfigSection(
 			name = "Prayer Settings",
@@ -112,6 +123,17 @@ public interface HealthNotificationsConfig extends Config
 	)
 	default boolean disablePrayerNotifications() {
 		return true;
+	}
+
+	@ConfigItem(
+			keyName = "prayerNotifyTime",
+			name = "Prayer Notify Time",
+			description = "Seconds between Prayer notifications (0 for every tick)",
+			position = 105,
+			section = prayerSettings
+	)
+	default int getPrayerNotifyTime() {
+		return 1;
 	}
 
 	/* Combo Settings */
