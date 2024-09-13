@@ -26,6 +26,8 @@ import java.awt.*;
 )
 public class HealthNotificationsPlugin extends Plugin
 {
+	private boolean shouldNotifyHitpoints = true;
+	private boolean shouldNotifyPrayer = true;
 	private long lastHitpointNotificationTime = 0L;
 	private long lastPrayerNotificationTime = 0L;
 
@@ -63,19 +65,41 @@ public class HealthNotificationsPlugin extends Plugin
 		}
 
 		if (!config.disableHitpointNotifications() && hitpointTotalBelowThreshold()) {
-			long currentTime = System.currentTimeMillis();
-			if (lastHitpointNotificationTime == 0L || currentTime - lastHitpointNotificationTime >= config.getHitpointNotifyTime() * 1000L) {
-				notifier.notify("Your hitpoints are below " + config.getHitpointThreshold());
-				lastHitpointNotificationTime = currentTime;
+			int hitpointNotifyTime = config.getHitpointNotifyTime();
+			if (hitpointNotifyTime == 0) {
+				if (shouldNotifyHitpoints) {
+					notifier.notify("Your hitpoints are below " + config.getHitpointThreshold());
+					shouldNotifyHitpoints = false;
+				}
+			} else {
+				long currentTime = System.currentTimeMillis();
+				if (lastHitpointNotificationTime == 0L || currentTime - lastHitpointNotificationTime >= hitpointNotifyTime * 1000L) {
+					notifier.notify("Your hitpoints are below " + config.getHitpointThreshold());
+					lastHitpointNotificationTime = currentTime;
+				}
 			}
 		}
 
 		if (!config.disablePrayerNotifications() && prayerTotalBelowThreshold()) {
-			long currentTime = System.currentTimeMillis();
-			if (lastPrayerNotificationTime == 0L || currentTime - lastPrayerNotificationTime >= config.getPrayerNotifyTime() * 1000L) {
-				notifier.notify("Your prayer points are below " + config.getPrayerThreshold());
-				lastPrayerNotificationTime = currentTime;
+			int prayerNotifyTime = config.getPrayerNotifyTime();
+			if (prayerNotifyTime == 0) {
+				if (shouldNotifyPrayer) {
+					notifier.notify("Your prayer points are below " + config.getPrayerThreshold());
+					shouldNotifyPrayer = false;
+				}
+			} else {
+				long currentTime = System.currentTimeMillis();
+				if (lastPrayerNotificationTime == 0L || currentTime - lastPrayerNotificationTime >= prayerNotifyTime * 1000L) {
+					notifier.notify("Your prayer points are below " + config.getPrayerThreshold());
+					lastPrayerNotificationTime = currentTime;
+				}
 			}
+		}
+
+		/* Maintain previous releases behavior around handling prayer notifications */
+		if (!hitpointTotalBelowThreshold()) {
+			shouldNotifyHitpoints = true;
+			shouldNotifyPrayer = true;
 		}
 	}
 

@@ -63,12 +63,12 @@ public interface HealthNotificationsConfig extends Config
 	@ConfigItem(
 			keyName = "hitpointNotifyTime",
 			name = "Hitpoint Notify Time",
-			description = "Seconds between Hitpoint notifications (0 for every tick)",
+			description = "Seconds between Hitpoint notifications",
 			position = 5,
 			section = hitpointSettings
 	)
 	default int getHitpointNotifyTime() {
-		return 1;
+		return 0;
 	}
 
 	/* Prayer Settings */
@@ -128,12 +128,12 @@ public interface HealthNotificationsConfig extends Config
 	@ConfigItem(
 			keyName = "prayerNotifyTime",
 			name = "Prayer Notify Time",
-			description = "Seconds between Prayer notifications (0 for every tick)",
+			description = "Seconds between Prayer notifications",
 			position = 105,
 			section = prayerSettings
 	)
 	default int getPrayerNotifyTime() {
-		return 1;
+		return 0;
 	}
 
 	/* Combo Settings */
